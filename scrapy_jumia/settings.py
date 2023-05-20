@@ -32,6 +32,8 @@ FEED_EXPORT_ENCODING = "utf-8"
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    #"jumia.middlewares.JumiaDownloaderMiddleware": 543,
+   'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+   'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
    'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
@@ -58,6 +60,19 @@ ITEM_PIPELINES ={
 
         }
 
+SCRAPEOPS_API_KEY = 'c0f1d288-cbe4-464c-9e22-59881bd08841'
+
+# Enable or disable extensions
+# See https://docs.scrapy.org/en/latest/topics/extensions.html
+EXTENSIONS = {
+#    "scrapy.extensions.telnet.TelnetConsole": None,
+'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500, 
+}
+  
+
+
+  
+
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -83,11 +98,7 @@ ITEM_PIPELINES ={
 #    "Accept-Language": "en",
 #}
 
-# Enable or disable extensions
-# See https://docs.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
-#    "scrapy.extensions.telnet.TelnetConsole": None,
-#}
+
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
