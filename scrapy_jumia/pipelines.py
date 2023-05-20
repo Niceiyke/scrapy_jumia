@@ -94,8 +94,6 @@ class SavingToDbpostgres:
                             (item['name'],item['stock'],item['category'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
             
             self.con.commit()
-            self.cur.close()
-            self.con.close()
             print('ADDED')
 
         except Exception as e:
