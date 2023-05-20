@@ -87,21 +87,17 @@ class SavingToDbpostgres:
 
         print("connected")
 
-    '''
-    def create_table(self):
-
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS Product(
-        name TEXT PRIMARY KEY,stock text,category text,store text,image text,url text,discount REAL,original_price REAL,discount_price REAL)""")
 
     def process_item(self,item,spider):
         try:
-            self.cur.execute(""" insert into Product (name,stock,category,store,image,url,discount,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+            self.cur.execute(""" insert into products_product (name,stock,category,store,image,url,discount,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                             (item['name'],item['stock'],item['category'],item['store'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
             
             self.con.commit
+            print('ADDED')
 
         except BaseException as e:
             print('db_err',e)
 
         return item
-    '''
+  
