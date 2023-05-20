@@ -25,7 +25,7 @@ class Remove_Items_NotinStock_Pipeline:
             return item
 
         else:
-            raise DropItem(" {item} sold out")
+            raise DropItem(f" {item!r} sold out")
 
 
 class Remove_Items_withNoDiscount_Pipeline:
@@ -36,8 +36,22 @@ class Remove_Items_withNoDiscount_Pipeline:
             return item
 
         else:
-            raise DropItem("No Discount found for {item}")
+            raise DropItem(f"No Discount found for {item!r}")
+        
+class Remove_Duplicate_item_Pipeline:
+    def __init__(self):
+        self.names_seen =set()
 
+    def process_item(self,item,spider):
+        adapter = ItemAdapter(item)
+
+        if adapter['name'] in self.names_seen:
+
+            raise DropItem(f'Duplicate item {item!r} found')
+        
+        else:
+            self.names_seen.add(adapter['name'])
+            return item
 
 class SavingToDb:
     def __init__(self):
@@ -90,7 +104,7 @@ class SavingToDbpostgres:
 
     def process_item(self,item,spider):
         try:
-            self.cur.execute(""" insert into products_product (name,stock,category,image,product_url,discount_percent,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s)""",
+            self.cur.execute(""" insert into products_product (name,stock,category,image,product_url,discount_percent,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s) on conflict(name) do nothing""",
                             (item['name'],item['stock'],item['category'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
             
             self.con.commit()

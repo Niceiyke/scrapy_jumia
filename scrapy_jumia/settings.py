@@ -56,8 +56,9 @@ HTTPCACHE_STORAGE= 'scrapy_splash.SplashAwareFSCacheStorage'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES ={
     "scrapy_jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
-    "scrapy_jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
-    "scrapy_jumia.pipelines.SavingToDbpostgres": 300,
+    "scrapy_jumia.pipelines.Remove_Items_NotinStock_Pipeline": 150,
+    "scrapy_jumia.pipelines.Remove_Duplicate_item_Pipeline": 200,
+    "scrapy_jumia.pipelines.SavingToDbpostgres": 250,
 
         }
 
