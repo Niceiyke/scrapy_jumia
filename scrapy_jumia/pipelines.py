@@ -90,8 +90,8 @@ class SavingToDbpostgres:
 
     def process_item(self,item,spider):
         try:
-            self.cur.execute(""" insert into products_product (name,stock,category,store,image,url,discount,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                            (item['name'],item['stock'],item['category'],item['store'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
+            self.cur.execute(""" insert into products_product (name,stock,category,image,url,discount,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s)""",
+                            (item['name'],item['stock'],item['category'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
             
             self.con.commit
             print('ADDED')
