@@ -93,7 +93,7 @@ class SavingToDbpostgres:
             self.cur.execute(""" insert into products_product (name,stock,category,image,product_url,discount_percent,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s)""",
                             (item['name'],item['stock'],item['category'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
             
-            self.con.commit
+            self.con.commit()
             print('ADDED')
 
         except BaseException as e:
