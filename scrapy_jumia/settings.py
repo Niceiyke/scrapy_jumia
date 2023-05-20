@@ -57,6 +57,7 @@ HTTPCACHE_STORAGE= 'scrapy_splash.SplashAwareFSCacheStorage'
 ITEM_PIPELINES ={
     "scrapy_jumia.pipelines.Remove_Items_withNoDiscount_Pipeline": 100,
     "scrapy_jumia.pipelines.Remove_Items_NotinStock_Pipeline": 200,
+    "scrapy_jumia.pipelines.SavingToDbpostgres": 300,
 
         }
 

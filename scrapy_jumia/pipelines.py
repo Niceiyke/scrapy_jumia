@@ -64,12 +64,13 @@ class SavingToDb:
 class SavingToDbpostgres:
 
     def __init__(self):
-        self.con = psycopg2.connect(database="postgres",user='postgres',password='postgres',host='localhost',port= '5432')
+        self.con = psycopg2.connect(database="postgres",user='postgres',password='postgres',host='3.23.130.169',port= '5432')
         
         self.cur=self.con.cursor()
 
         print('connected')
 
+    '''
     def create_table(self):
 
         self.cur.execute("""CREATE TABLE IF NOT EXISTS Product(
@@ -86,3 +87,6 @@ class SavingToDbpostgres:
             print('db_err',e)
 
         return item
+    '''    
+
+    
