@@ -96,7 +96,7 @@ class SavingToDbpostgres:
             self.con.commit()
             print('ADDED')
 
-        except BaseException as e:
+        except Exception as e:
             print('db_err',e)
 
         return item
