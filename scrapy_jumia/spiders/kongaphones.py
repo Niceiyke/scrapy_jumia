@@ -40,7 +40,7 @@ class kongaPhoneSpyder(scrapy.Spider):
             l.add_css('name','div.af885_1iPzH ::text'),
             l.add_css('discount_price','span.d7c0f_sJAqi'),
             l.add_css('original_price','span.f6eb3_1MyTu'),
-            l.add_css('dicount_percent','span._4472a_zYlL-._6c244_q2qap ::text'),
+            l.add_css('discount_percent','span._4472a_zYlL-._6c244_q2qap ::text'),
             l.add_value('category','smartphones'),
             l.add_value('store','Konga'),
             l.add_css('image','img.f5e10_VzEXF _59c59_3-MyH lazyloaded ::attr(src)'),

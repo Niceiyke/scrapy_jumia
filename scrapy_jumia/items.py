@@ -12,15 +12,12 @@ from w3lib.html import remove_tags
 
 
 def process_price(value):
-    print('gert',value)
     valu=value.split('₦')[-1].strip().replace(",",'')
     valu =float(valu)
     return valu
 
 def process_kongaprice(value):
-    print('gert',value)
     val =value.split('₦')[-1].strip()
-    print('gert2',val)
     valu =float(val)
     return valu
 
@@ -66,6 +63,6 @@ class KongaItem(scrapy.Item):
     store=scrapy.Field(input_processor=MapCompose(remove_tags,), output_processor=(TakeFirst()))
     image=scrapy.Field(input_processor=MapCompose(remove_tags), output_processor=(TakeFirst()))
     url=scrapy.Field(input_processor=MapCompose(process_kongaurl),output_processor=(TakeFirst()))
-    dicount_percent=scrapy.Field(input_processor=MapCompose(remove_tags,process_discount), output_processor=(TakeFirst()))
+    discount_percent=scrapy.Field(input_processor=MapCompose(remove_tags,process_discount), output_processor=(TakeFirst()))
 
    
