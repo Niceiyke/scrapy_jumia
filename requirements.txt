@@ -2,3 +2,4 @@ scrapy
 scrapeops-scrapy
 psycopg2-binary
 scrapy-splash
+python-dotenv

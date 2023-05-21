@@ -8,6 +8,9 @@
 from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
 import psycopg2
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class JumiaPipeline:
@@ -57,11 +60,11 @@ class Remove_Duplicate_item_Pipeline:
 class SavingToDbpostgres:
     def __init__(self):
         self.con = psycopg2.connect(
-            database="postgresec2",
-            user="postgresec2",
-            password="postgresec2",
-            host="3.23.130.169",
-            port="5432",
+            database=os.environ.get('database'),
+            user=os.environ.get('user'),
+            password=os.environ.get('password'),
+            host=os.environ.get('host'),
+            port=os.environ.get('port'),
         )
 
         self.cur = self.con.cursor()

@@ -1,11 +1,7 @@
-# Scrapy settings for scrapy_jumia project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 BOT_NAME = "web crawler bot"
 
@@ -51,7 +47,7 @@ ITEM_PIPELINES = {
     "scrapy_jumia.pipelines.SavingToDbpostgres": 250,
 }
 
-SCRAPEOPS_API_KEY = "c0f1d288-cbe4-464c-9e22-59881bd08841"
+SCRAPEOPS_API_KEY = os.environ.get("SCRAPEOPS_API_KEY")
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
