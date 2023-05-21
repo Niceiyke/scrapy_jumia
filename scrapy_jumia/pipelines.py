@@ -112,7 +112,6 @@ class SavingToDbpostgres:
             print('ADDED')
 
         except Exception as e:
-            print(item)
             print('db_err',e)
             dd.append(f'{e}:{item}')
             
