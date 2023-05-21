@@ -103,6 +103,7 @@ class SavingToDbpostgres:
 
 
     def process_item(self,item,spider):
+        dd=[]
         try:
             self.cur.execute(""" insert into products_product (name,stock,category,image,product_url,discount_percent,original_price,discount_price) values (%s,%s,%s,%s,%s,%s,%s,%s) on conflict(name) do nothing""",
                             (item['name'],item['stock'],item['category'],item['image'],item['url'],item['discount_percent'],item['original_price'],item['discount_price'],))
@@ -113,7 +114,8 @@ class SavingToDbpostgres:
         except Exception as e:
             print(item)
             print('db_err',e)
-            return
-
+            dd.append(f'{e}:{item}')
+            
+        print(dd)
         return item
   
