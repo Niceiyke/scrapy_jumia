@@ -1,0 +1,4 @@
+scrapy
+scrapeops-scrapy
+psycopg2-binary
+scrapy-splash

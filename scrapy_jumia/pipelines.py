@@ -7,7 +7,6 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
-import sqlite3
 import psycopg2
 
 
@@ -53,38 +52,6 @@ class Remove_Duplicate_item_Pipeline:
             self.names_seen.add(adapter['name'])
             return item
 
-class SavingToDb:
-    def __init__(self):
-        self.con = sqlite3.connect("scrapy.db")
-
-        self.cur = self.con.cursor()
-        self.create_table()
-
-    def create_table(self):
-        self.cur.execute(
-            """CREATE TABLE IF NOT EXISTS products(
-        name TEXT PRIMARY KEY,stock text,category text,store text,image text,url text,discount REAL,original_price REAL,discount_price REAL)"""
-        )
-
-    def process_item(self, item, spider):
-        self.cur.execute(
-            """ INSERT INTO products VALUES (?,?,?,?,?,?,?,?,?)""",
-            (
-                item["name"],
-                item["stock"],
-                item["category"],
-                item["store"],
-                item["image"],
-                item["url"],
-                item["discount_percent"],
-                item["original_price"],
-                item["discount_price"],
-            ),
-        )
-
-        self.con.commit()
-
-        return item
 
 
 class SavingToDbpostgres:
@@ -111,6 +78,7 @@ class SavingToDbpostgres:
 
         except Exception as e:
             print('db_err',e)
+            
  
         return item
   

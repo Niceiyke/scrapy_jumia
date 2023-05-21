@@ -7,7 +7,7 @@ class jumiaLaptopSpyder(scrapy.Spider):
     name ='jumialaptop'
     start_urls =['https://www.jumia.com.ng/mlp-working-from-anywhere/laptops/?rating=4-5&seller_score=4-5#catalog-listing',]
 
-
+   
     def parse(self, response):
         products =response.css('article.c-prd')
 
