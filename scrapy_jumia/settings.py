@@ -21,7 +21,7 @@ ROBOTSTXT_OBEY = False
 
 
 # Splash Server Endpoint
-SPLASH_URL = 'http://localhost:8050'
+SPLASH_URL = 'http://3.145.100.153:8050'
 
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
